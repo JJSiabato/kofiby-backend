@@ -2,7 +2,7 @@
   "name": "kofiby-backend",
   "version": "0.0.0",
   "description": "This is the backend repository for Kofiby",
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": "John Siabato",
   "license": "MIT",
   "private": true,
