@@ -16,15 +16,20 @@ router.post('/', async (ctx) => {
     }
 
     // 1️⃣ Guardar en Supabase
-    //const result = await insertUser({ full_name, email, phone_number, actor_type, farm_name, state, city, interest_reason });
+    await insertUser({ full_name, email, phone_number, actor_type, farm_name, state, city, interest_reason });
 
     // 2️⃣ Enviar correo de confirmación
     await sendMail(email, full_name);
 
     ctx.status = 201;
     ctx.body = { success: true };
-  } catch (error) {
-    console.error(error);
+  } catch (error:any) {
+    
+    if(error.code === '23505') {
+      ctx.status = 409;
+      ctx.body = { error: 'Email already exists' };
+      return;
+    }
     ctx.status = 500;
     ctx.body = { error: 'Internal server error' };
   }
