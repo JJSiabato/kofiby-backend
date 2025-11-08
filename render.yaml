@@ -7,3 +7,8 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      # CORS: Por defecto se permite https://kofiby.com
+      # Si necesitas agregar más orígenes, descomenta y configura ALLOWED_ORIGINS
+      # Ejemplo: https://kofiby.com,https://www.kofiby.com
+      # - key: ALLOWED_ORIGINS
+      #   value: https://kofiby.com,https://www.kofiby.com
