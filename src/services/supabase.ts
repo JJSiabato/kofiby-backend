@@ -7,7 +7,7 @@ const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_KE
 
 export const insertUser = async ({ full_name, email, phone_number, actor_type, farm_name, state, city, interest_reason }: RegistrationData) => {
   const { data, error } = await supabase
-    .from('pioneers')
+    .from(actor_type === 'customer_pioneer' ? 'customers_waitlist' : 'pioneers')
     .insert([{ full_name, email, phone_number, actor_type, farm_name, state, city, interest_reason }])
     .select();
 
